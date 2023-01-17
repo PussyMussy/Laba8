@@ -1,36 +1,27 @@
 package Example7;
-
 import java.io.*;
-
-import static java.lang.System.out;
-
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = null;
+        BufferedWriter out=null;
         try {
-            start();
-        } catch (Exception e) {
-            out.printf("Error - %e", e);
-        }
-    }
-
-    private static void start() throws Exception {
-        BufferedReader reader = null;
-        BufferedWriter writer = null;
-        try {
-            reader = new BufferedReader(new FileReader("C:\\tmp\\f1.txt"), 1024);
-            writer = new BufferedWriter(new FileWriter("C:\\tmp\\f2.txt"));
+            br = new BufferedReader( new FileReader("C:\\tmp\\f1.txt" ), 1024);
+            out = new BufferedWriter( new FileWriter( "C:\\tmp\\f1.txt" ));
             int lineCount = 0;
-            String line = "";
-            while ((line = reader.readLine()) != null) {
+            String s;
+            while ((s = br.readLine()) != null) {
                 lineCount++;
-                out.printf("$d: $s\n", lineCount, line);
-                writer.write(line);
-                writer.newLine();
+                System.out.println(lineCount + ": "+ s);
+                out.write(s);
+                out.newLine();
             }
-            writer.flush();
-        } finally {
-            reader.close();
-            writer.close();
+        } catch (IOException e) {
+            System.out.println("Ошибка !!!!");
+
         }
-    }
-}
+        finally {
+            br.close();
+            out.flush();
+            out.close();
+        }
+    }}

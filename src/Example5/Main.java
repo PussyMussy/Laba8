@@ -1,36 +1,37 @@
 package Example5;
-
-import java.io.File;
+import java.io.*;
 import java.util.Scanner;
 import static java.lang.System.in;
 import static java.lang.System.out;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            start();
-        } catch (Exception e) {
-            out.printf("Error - %e", e);
+        Scanner sc= new Scanner(System.in);
+        System.out.print("Введите имя файла => "); String
+                fname=sc.nextLine();
+        try{
+            File f1=new File(fname);
+            f1.createNewFile(); // файл создан
+            System.out.println("Полный путь файла: "+ f1.getAbsolutePath());
+            System.out.print("Введите количество строк для записи в файл => ");
+            int n=sc.nextInt();
+            DataOutputStream dOut=
+                    new DataOutputStream( new FileOutputStream(f1));
+            sc.nextLine(); //очистка буфера
+            for (int i = 0; i < n; i++) {
+                System.out.print("Введите строку для записи в файл => ");
+                String s=sc.nextLine();
+                dOut.writeUTF(s );
+            }
+            dOut.flush();
+            dOut.close();
+            DataInputStream dIn=new DataInputStream(new FileInputStream(f1));
+            while (true) {
+                System.out.println(dIn.readUTF());
+            }
+        }catch (Exception e) {
+            System.out.println(""+e);
         }
-    }
-
-    private static void start() throws Exception {
-        var scan = new Scanner(in);
-        out.print("Введите имя файла: ");
-        var fileName = scan.nextLine();
-        var f1 = new File(fileName);
-        out.printf("Полный путь файла: %s\n", f1.getAbsolutePath());
-        out.print("Введите количество строк для записи в файл: ");
-        int count = scan.nextInt();
-        var lines = new String[count];
-        scan.nextLine();
-        for (int i = 0; i < count; i++) {
-            out.println("Введите строку для записи в файл: ");
-            lines[i] = scan.nextLine();
-        }
-        Program.writeStringsToFile(f1.getAbsolutePath(), lines);
-        out.println("Запись прошла успешно!\n" +
-                    "Записанные данные: \n");
-        Program.printFilesData(f1.getAbsolutePath());
     }
 }
+

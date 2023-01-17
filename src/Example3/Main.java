@@ -1,27 +1,21 @@
 package Example3;
-
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
-
-import static java.lang.System.out;
-
+import static Example3.Program.readAllByArray;
 public class Main {
-    public static void main(String[] args) {
-        try {
-            start();
-        } catch (Exception e) {
-            out.printf("Error - %e", e);
-        }
-    }
-
-    private static void start() throws Exception {
-        var fileName = "C:\\tmp\\text.txt";
+    public static void main(String[] args) throws IOException {
+        String fileName = "C:\\tmp\\f1.txt";
         InputStream inFile = null;
         try {
-            inFile = new FileInputStream("C:\\tmp\\text.txt");
-            Program.readAllByByteToConsole(inFile);
+            inFile = new FileInputStream(fileName);
+            readAllByArray(inFile);
+        } catch (IOException e) {
+            System.out.println("Ошибка открытия-закрытия файла" + fileName+e);
         } finally {
-            if (inFile != null) inFile.close();
-        }
-    }
-}
+            if (inFile != null) {
+                try {
+                    inFile.close();
+                } catch (IOException ignore) {
+                }
+            }}}}

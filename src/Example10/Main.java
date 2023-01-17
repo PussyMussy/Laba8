@@ -2,29 +2,24 @@ package Example10;
 import java.io.*;
 import static java.lang.System.out;
 public class Main {
-    public static void main(String[] args) {
-        try {
-            start();
-        } catch (Exception e) {
-            out.printf("Error - %e", e);
-        }
-    }
-    private static void start() throws Exception {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = null;
-        PrintWriter pw = null;
+        PrintWriter out=null;
         try {
-            br = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\tmp\\f1.txt"), "cp1251"));
-            pw = new PrintWriter("C:\\tmp\\f2.txt", "cp1251");
+            br = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream("C:\\tmp\\f1.txt"),"cp1251"));
+            out = new PrintWriter("C:\\tmp\\f1.txt", "cp1251");
             int lineCount = 0;
-            String line;
-            while ((line = br.readLine()) != null) {
+            String s;
+            while ((s = br.readLine()) != null) {
                 lineCount++;
-                out.printf("%d: %s\n", lineCount, line);
+                out.println(lineCount + ": " + s);
             }
-            pw.flush();
-        } finally {
+        } catch (IOException e) {
+            System.out.println("Ошибка !!!!!!!!"); }
+        finally{
             br.close();
-            pw.close();
-        }
-    }
-}
+            out.flush();
+            out.close();
+        }}}

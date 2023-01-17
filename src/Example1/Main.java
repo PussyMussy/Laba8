@@ -1,32 +1,21 @@
 package Example1;
-
 import java.io.File;
-import static java.lang.System.out;
-
 public class Main {
     public static void main(String[] args) {
         try {
-            var f1 = new File("MyFile.txt");
+            File f1=new File("MyFile1.txt");
             f1.createNewFile();
-            FileExists(f1);
-            var f2 = new File("E:\\MyFile.txt");
+            if (f1.exists()) {
+                System.out.println("Создан!!!!");
+                System.out.println("Полный путь1: "+ f1.getAbsolutePath());
+            }
+            File f2=new File("C:\\tmp\\f1.txt");
             f2.createNewFile();
-            FileExists(f2);
-            var f3 = new File("E:\\Dir1\\Dir2\\Dir3");
+            System.out.println( "Полный путь 2: "+ f2.getAbsolutePath());
+            File f3=new File("C:\\tmp\\f1.txt");
             f3.mkdirs();
-            FileExists(f3);
+            System.out.println("Полный путь 3: "+ f3.getAbsolutePath());
         } catch (Exception e) {
-            out.println("Error - " + e);
+            System.out.println("Ошибка!!! "+e);
         }
-    }
-
-    private static void FileExists(File f) throws Exception {
-        if (f.exists()) {
-            out.println("Created");
-            out.println("Full path - " + f.getAbsolutePath());
-        }
-        else {
-            throw new Exception(String.format("Файл \"%s\" не создан!", f.getName()));
-        }
-    }
-}
+    }}

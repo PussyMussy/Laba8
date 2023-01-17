@@ -1,20 +1,15 @@
 package Example2;
-
 import java.io.IOException;
 import java.io.InputStream;
-
-import static java.lang.System.out;
-
-public final class Program {
-    static void readAllByByteToConsole(InputStream in) throws IOException {
+public class Program {
+    public static void readAllByByte(InputStream in) throws IOException {
         while (true) {
             int oneByte = in.read();
-            if (oneByte != -1)
-                out.print((char)oneByte);
-            else {
-                out.print("\nend");
+            if (oneByte != -1) {
+                System.out.println((char) oneByte);
+            } else {
+                System.out.println("\n" + "end");
                 break;
             }
         }
-    }
-}
+    }}

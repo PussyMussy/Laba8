@@ -1,34 +1,39 @@
 package Example4;
-
 import java.io.*;
 import java.util.Scanner;
-
-import static java.lang.System.out;
-import static java.lang.System.in;
-
 public class Main {
     public static void main(String[] args) {
-        try {
-            start();
-        } catch (Exception e) {
-            out.printf("Error - %e", e);
+        try{
+            File f1=new
+                    File("C:\\tmp\\f1.txt");
+            f1.createNewFile();
+            Scanner sc = new Scanner(System.in, "cp1251");
+            DataOutputStream wr =
+                    new DataOutputStream(new FileOutputStream(f1.getAbsolutePath()));
+            System.out.println("Сколько вещественных чисел записать в\n" +
+                    "                    файл?"); int count = sc.nextInt();
+                    System.out.println("Введите числа:");
+            for (int i = 0; i < count; i++)
+                wr.writeFloat(sc.nextFloat());
+            wr.flush();
+            wr.close();
+            File f2=new
+                    File("C:\\tmp\\f1.txt");
+            f2.createNewFile();
+            DataInputStream rd =
+                    new DataInputStream(new FileInputStream(f1.getAbsolutePath()));
+            wr = new DataOutputStream(new FileOutputStream(f2.getAbsolutePath()));
+            try{
+                while(true){
+                    float number=rd.readFloat();
+                    wr.writeFloat(number);
+                    System.out.println(" Число "+ (float)number);
+                }
+            }catch(EOFException e){}
+            wr.flush();
+            wr.close();
+            rd.close();
+        }catch(IOException e){
+            System.out.println("End of file");
         }
-    }
-
-    private static void start() throws Exception {
-        var f1 = new File("C:\\tmp\\numIsh.txt");
-        f1.createNewFile();
-        var scan = new Scanner(in, "UTF-8");
-        out.print("Сколько вещественных чисел записать в файл?: ");
-        int count = scan.nextInt();
-        float[] arr = new float[count];
-        out.print("Введите числа: ");
-        for (int i = 0; i < count; i++)
-            arr[i] = scan.nextFloat();
-        Program.writeFloatsToFile(f1.getAbsolutePath(), arr);
-
-        var f2 = new File("C:\\tmp\\numRez.txt");
-        f2.createNewFile();
-        Program.copyFile(f1.getAbsolutePath(), f2.getAbsolutePath());
-    }
-}
+    }}

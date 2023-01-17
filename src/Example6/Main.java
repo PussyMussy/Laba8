@@ -1,35 +1,21 @@
 package Example6;
-
 import java.io.*;
-
-import static java.lang.System.in;
-import static java.lang.System.out;
-
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Reader in=null;
+        Writer out=null;
         try {
-            start();
-        } catch (Exception e) {
-            out.printf("Error - %e", e);
-        }
-    }
-
-    private static void start() throws Exception {
-        Reader reader = null;
-        Writer writer = null;
-        try {
-            reader = new FileReader("C:\\tmp\\f1.txt");
-            writer = new FileWriter("C:\\tmp\\f2.txt", true);
+            in = new FileReader("C:\\tmp\\f1.txt");
+            out= new FileWriter("C:\\tmp\\f1.txt", true);
             int oneByte;
             while ((oneByte = in.read()) != -1) {
-                var ch = (char)oneByte;
-                out.write(ch);
-                out.append(ch);
-                out.print(ch);
+                out.append((char)oneByte);
+                System.out.print((char)oneByte);
             }
-        } finally {
-            reader.close();
-            writer.close();
+        } catch (IOException e) {
+            System.out.println("Ошибка!!!! ");
         }
-    }
-}
+        finally{
+            in.close();
+            out.close();
+        } }}

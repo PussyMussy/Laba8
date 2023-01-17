@@ -1,23 +1,18 @@
 package Example3;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
-
-import static java.lang.System.out;
-
-public final class Program {
-    static void readAllByByteToConsole(InputStream in) throws IOException {
-        var buf = new byte[5];
+public class Program {
+    public static void readAllByArray(InputStream in) throws IOException {
+        byte [] buff = new byte[5];
         while (true) {
-            int count = in.read(buf);
-            if (count != -1)
-                out.printf("Count = %d, buff = %s, str = %s\n",
-                           count,
-                           Arrays.toString(buf),
-                           new String(buf, 0, count, "UTF-8"));
-            else
+            int count = in.read(buff);
+            if (count !=-1) {
+System.out.println("Количество =" + count +", buff="
+                        + Arrays.toString(buff) +", str="
+                        + new String(buff, 0, count,"cp1251" ));
+            }else {
                 break;
+            }
         }
-    }
-}
+    }}
