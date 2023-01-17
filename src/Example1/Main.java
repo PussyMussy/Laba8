@@ -3,7 +3,7 @@ package Example1;
 import java.io.File;
 import static java.lang.System.out;
 
-public class Program {
+public class Main {
     public static void main(String[] args) {
         try {
             var f1 = new File("MyFile.txt");

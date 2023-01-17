@@ -1,12 +1,11 @@
 package Example6;
 
 import java.io.*;
-import java.util.Scanner;
 
 import static java.lang.System.in;
 import static java.lang.System.out;
 
-public class Program {
+public class Main {
     public static void main(String[] args) {
         try {
             start();

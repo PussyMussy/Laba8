@@ -6,7 +6,7 @@ import java.util.Scanner;
 import static java.lang.System.out;
 import static java.lang.System.in;
 
-public class Program {
+public class Main {
     public static void main(String[] args) {
         try {
             start();
@@ -19,16 +19,16 @@ public class Program {
         var f1 = new File("C:\\tmp\\numIsh.txt");
         f1.createNewFile();
         var scan = new Scanner(in, "UTF-8");
-        out.print("Сколько вещ. чисел записать в файл?: ");
+        out.print("Сколько вещественных чисел записать в файл?: ");
         int count = scan.nextInt();
         float[] arr = new float[count];
         out.print("Введите числа: ");
         for (int i = 0; i < count; i++)
             arr[i] = scan.nextFloat();
-        FSWorker.writeFloatsToFile(f1.getAbsolutePath(), arr);
+        Program.writeFloatsToFile(f1.getAbsolutePath(), arr);
 
         var f2 = new File("C:\\tmp\\numRez.txt");
         f2.createNewFile();
-        FSWorker.copyFile(f1.getAbsolutePath(), f2.getAbsolutePath());
+        Program.copyFile(f1.getAbsolutePath(), f2.getAbsolutePath());
     }
 }

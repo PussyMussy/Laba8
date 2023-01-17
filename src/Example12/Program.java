@@ -4,12 +4,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FSWorker {
-    static <T> void writeParamsToFile(String path, boolean append, T ...collection) throws IOException {
-        writeCollectionToFile(path, append, collection);
+public class Program {
+    static <T> void FileWrite(String path, boolean append, T ...collection) throws IOException {
+        FileWriteCollection(path, append, collection);
     }
 
-    static <T> void writeCollectionToFile(String path, boolean append, T[] collection) throws IOException {
+    static <T> void FileWriteCollection(String path, boolean append, T[] collection) throws IOException {
         BufferedWriter bw = null;
         try {
             bw = new BufferedWriter(new FileWriter(path, append));
@@ -20,7 +20,7 @@ public class FSWorker {
         }
     }
 
-    static <T> void writeCollectionToFile(String path, boolean append, T[] collection, String splitter) throws IOException {
+    static <T> void FileWriteCollection(String path, boolean append, T[] collection, String splitter) throws IOException {
         BufferedWriter bw = null;
         try {
             bw = new BufferedWriter(new FileWriter(path, append));
@@ -31,7 +31,7 @@ public class FSWorker {
         }
     }
 
-    static <T> void writeCollectionToFile(String path, boolean append, List<T> collection) throws IOException {
+    static <T> void FileWriteCollection(String path, boolean append, List<T> collection) throws IOException {
         BufferedWriter bw = null;
         try {
             bw = new BufferedWriter(new FileWriter(path, append));
@@ -42,7 +42,7 @@ public class FSWorker {
         }
     }
 
-    static <T> void writeCollectionToFile(String path, boolean append, List<T> collection, String splitter) throws IOException {
+    static <T> void FileWriteCollection(String path, boolean append, List<T> collection, String splitter) throws IOException {
         BufferedWriter bw = null;
         try {
             bw = new BufferedWriter(new FileWriter(path, append));
@@ -53,7 +53,7 @@ public class FSWorker {
         }
     }
 
-    static ArrayList<String> readFileToCollection(String path) throws IOException {
+    static ArrayList<String> FileReadCollection(String path) throws IOException {
         var fileInfo = new ArrayList<String>();
         BufferedReader br = null;
         try {

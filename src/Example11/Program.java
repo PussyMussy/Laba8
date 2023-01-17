@@ -1,14 +1,11 @@
 package Example11;
-
 import java.io.*;
 import java.util.ArrayList;
-
-public class FSWorker {
-    static <T> void writeParamsToFile(String path, boolean append, T ...collection) throws IOException {
-        writeArrayToFile(path, append, collection);
+public class Program {
+    static <T> void FileWrite(String path, boolean append, T ...collection) throws IOException {
+        FileWriteArray(path, append, collection);
     }
-
-    static <T> void writeArrayToFile(String path, boolean append, T[] collection) throws IOException {
+    static <T> void FileWriteArray(String path, boolean append, T[] collection) throws IOException {
         BufferedWriter bw = null;
         try {
             bw = new BufferedWriter(new FileWriter(path, append));
@@ -18,8 +15,7 @@ public class FSWorker {
             bw.close();
         }
     }
-
-    static ArrayList<String> readFileToArray(String path) throws IOException {
+    static ArrayList<String> FileReadArray(String path) throws IOException {
         var fileInfo = new ArrayList<String>();
         BufferedReader br = null;
         try {

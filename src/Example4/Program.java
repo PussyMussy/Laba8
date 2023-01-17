@@ -1,8 +1,6 @@
 package Example4;
-
 import java.io.*;
-
-public class FSWorker {
+public class Program {
     static void writeFloatsToFile(String path, float[] floats) throws IOException {
         DataOutputStream wr = null;
         try {

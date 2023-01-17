@@ -5,7 +5,7 @@ import java.util.Scanner;
 import static java.lang.System.in;
 import static java.lang.System.out;
 
-public class Program {
+public class Main {
     public static void main(String[] args) {
         try {
             start();
@@ -28,9 +28,9 @@ public class Program {
             out.println("Введите строку для записи в файл: ");
             lines[i] = scan.nextLine();
         }
-        FSWorker.writeStringsToFile(f1.getAbsolutePath(), lines);
+        Program.writeStringsToFile(f1.getAbsolutePath(), lines);
         out.println("Запись прошла успешно!\n" +
                     "Записанные данные: \n");
-        FSWorker.printFilesData(f1.getAbsolutePath());
+        Program.printFilesData(f1.getAbsolutePath());
     }
 }

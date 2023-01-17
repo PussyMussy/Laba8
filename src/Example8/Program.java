@@ -3,7 +3,7 @@ package Example8;
 import java.io.IOException;
 import java.io.Reader;
 
-public class FSWorker {
+public class Program {
     public static void readAllByByte(Reader in) throws IOException {
         while (true) {
             int oneByte = in.read();

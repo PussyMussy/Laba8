@@ -1,13 +1,11 @@
 package Example3;
 
-import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.net.URL;
 
 import static java.lang.System.out;
 
-public class Program {
+public class Main {
     public static void main(String[] args) {
         try {
             start();
@@ -21,7 +19,7 @@ public class Program {
         InputStream inFile = null;
         try {
             inFile = new FileInputStream("C:\\tmp\\text.txt");
-            Reader.readAllByByteToConsole(inFile);
+            Program.readAllByByteToConsole(inFile);
         } finally {
             if (inFile != null) inFile.close();
         }

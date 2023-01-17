@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 import static java.lang.System.out;
 
-public final class Reader {
+public final class Program {
     static void readAllByByteToConsole(InputStream in) throws IOException {
         while (true) {
             int oneByte = in.read();

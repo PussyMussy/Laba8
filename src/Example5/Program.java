@@ -1,9 +1,7 @@
 package Example5;
-
 import java.io.*;
 import static java.lang.System.out;
-
-public class FSWorker {
+public class Program {
     static void writeStringsToFile(String path, String[] lines) throws IOException {
         DataOutputStream outS = null;
         try {
@@ -15,7 +13,6 @@ public class FSWorker {
             outS.close();
         }
     }
-
     static void copyFile(String path, String newPath) throws IOException {
         DataInputStream rd = null;
         DataOutputStream wr = null;
@@ -35,7 +32,6 @@ public class FSWorker {
             wr.close();
         }
     }
-
     public static void printFilesData(String path) throws IOException {
         DataInputStream rd = null;
         try {

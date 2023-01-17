@@ -1,10 +1,7 @@
 package Example10;
-
 import java.io.*;
-
 import static java.lang.System.out;
-
-public class Program {
+public class Main {
     public static void main(String[] args) {
         try {
             start();
@@ -12,7 +9,6 @@ public class Program {
             out.printf("Error - %e", e);
         }
     }
-
     private static void start() throws Exception {
         BufferedReader br = null;
         PrintWriter pw = null;
