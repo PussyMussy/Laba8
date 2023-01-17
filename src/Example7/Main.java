@@ -17,7 +17,6 @@ public class Main {
             }
         } catch (IOException e) {
             System.out.println("Ошибка !!!!");
-
         }
         finally {
             br.close();
